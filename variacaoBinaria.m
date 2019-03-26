@@ -1,4 +1,4 @@
-function novaPopulacao = cruzamentoBinario(populacao)
+function novaPopulacao = variacaoBinaria(populacao)
 
     [numeroPopulacao, tamanhoBits] = size(populacao);
     
@@ -12,5 +12,10 @@ function novaPopulacao = cruzamentoBinario(populacao)
        % Cocatena a parte da direita da populacao de corte do primeiros elemento com a parte da
        % direita da populacao de corte do segundo elemento
        populacao(i, :) = [populacao(individuos(1), 1:populacaoCorte) individuos(p(2), populacaoCorte + 1:end)];
+       % Mutação de bits
+       % Primeiro elemento aleatório entre 1 e tamanhoBits
+       r = randperm(tamanhoBits, 1);
+       % O elemento recebe 1 - ele mesmo
+       populacao(i, r) = 1 - populacao(i, r);
     end
 end
