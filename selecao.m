@@ -1,15 +1,12 @@
-function [POP, FX] = selecao(POP,FX,tamPOP)
+function [indices] = selecao(FX,tamanhoPopulacao)
 
-    numPOP = size(FX,1);
+    numeroPopulacao = size(FX, 1);
     
-    [~, ind] = sort(FX);
+    [~, indices] = sort(FX);
     
-    ind = ind(1:round(0.1*tamPOP));    
-    r = randperm(numPOP);
+    indices = indices(1:round(0.1 * tamanhoPopulacao));    
+    r = randperm(numeroPopulacao);
     
-    ind = [ind; r'];
-    ind = ind(1:tamPOP);
-    
-    POP = POP(ind,:);
-    FX = FX(ind,:);
+    indices = [indices; r'];
+    indices = indices(1:tamanhoPopulacao);
 end
